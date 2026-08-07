@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MessageCircle, Music, Download, Globe2, Users, FileClock } from 'lucide-react';
+import { Mail, Phone, MessageCircle, Music, Download } from 'lucide-react';
 
 export default function App() {
   const [isDownloading, setIsDownloading] = useState(false);
@@ -13,7 +13,7 @@ FN:Lasse Mika Hartmann
 TEL;TYPE=CELL:+4917681159655
 EMAIL:lassemikahartmann@gmail.com
 NOTE:Tech-Nerd | Nymphenburger Gymnasium
-URL:https://lassehartmann.vercel.com
+URL:https://lassehartmann.vercel.app
 END:VCARD`;
 
     const blob = new Blob([vcard], { type: 'text/vcard' });
@@ -30,10 +30,11 @@ END:VCARD`;
   };
 
   return (
-    // Reiner Dark Mode Hintergrund mit dezentem Radial-Verlauf
-    <div className="min-h-screen bg-[#0a0a0a] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-neutral-900 to-[#0a0a0a] text-neutral-200 flex flex-col items-center p-4 md:p-8 font-sans antialiased selection:bg-neutral-800 selection:text-white">
+    // Reiner Dark Mode Hintergrund mit dezentem Radial-Verlauf - jetzt auch für Desktop perfekt zentriert
+    <div className="min-h-screen bg-[#0a0a0a] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-neutral-900 to-[#0a0a0a] text-neutral-200 flex items-center justify-center p-4 md:p-8 font-sans antialiased selection:bg-neutral-800 selection:text-white">
       
-      <div className="w-full max-w-sm flex flex-col gap-8 z-10 py-8">
+      {/* Auf dem Handy unsichtbar, auf dem Desktop eine schicke Karte */}
+      <div className="w-full max-w-md flex flex-col gap-8 z-10 py-8 md:bg-neutral-900/30 md:backdrop-blur-sm md:border md:border-neutral-800/50 md:shadow-2xl md:rounded-[2.5rem] md:p-10">
         
         {/* 1. Header Bereich */}
         <div className="flex flex-col items-center">
@@ -55,9 +56,9 @@ END:VCARD`;
           </p>
         </div>
 
-        {/* 2. Kontakt Links (JETZT OBEN) */}
+        {/* 2. Kontakt Links */}
         <div className="space-y-3 w-full px-1">
-          {/* High-Contrast Action Button - Als wichtigstes Element ganz oben in der Gruppe */}
+          {/* High-Contrast Action Button */}
           <button 
             onClick={handleSaveContact}
             disabled={isDownloading}
@@ -124,22 +125,6 @@ END:VCARD`;
             16 Jahre • 11. Klasse Nymphenburger Gymnasium, München. <br />
             Begeistert von Technologie und immer offen für gute Gespräche.
           </p>
-        </div>
-
-        {/* 4. Minimalistische Fakten */}
-        <div className="space-y-3 px-1">
-          <div className="flex items-center gap-4 p-3.5 rounded-xl bg-neutral-900/30 border border-neutral-800/50 hover:bg-neutral-900/60 transition-colors">
-            <Globe2 className="w-5 h-5 text-neutral-500 shrink-0" strokeWidth={1.5} />
-            <span className="text-sm text-neutral-300 font-light">3 Jahre in England gelebt</span>
-          </div>
-          <div className="flex items-center gap-4 p-3.5 rounded-xl bg-neutral-900/30 border border-neutral-800/50 hover:bg-neutral-900/60 transition-colors">
-            <Users className="w-5 h-5 text-neutral-500 shrink-0" strokeWidth={1.5} />
-            <span className="text-sm text-neutral-300 font-light">Habe einen Zwillingsbruder</span>
-          </div>
-          <div className="flex items-center gap-4 p-3.5 rounded-xl bg-neutral-900/30 border border-neutral-800/50 hover:bg-neutral-900/60 transition-colors">
-            <FileClock className="w-5 h-5 text-neutral-500 shrink-0" strokeWidth={1.5} />
-            <span className="text-sm text-neutral-300 font-light">Stammbaum reicht ~1000 Jahre zurück</span>
-          </div>
         </div>
 
       </div>
